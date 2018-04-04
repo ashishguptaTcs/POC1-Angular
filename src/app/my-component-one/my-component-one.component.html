@@ -1,3 +1,18 @@
-<div>
-  This is one of the child components.
+<div class="ProductCards row">
+  <div *ngFor="let ProductCard of ProductCards" class="ProductCard col-xs-6 col-sm-4 col-md-3 col-lg-2">
+    <div class="ProductCard-imageBlock">
+      <img src={{ProductCard.imageUrl}}>
+    </div>
+    <div class="ProductCard-infoBlock">
+      {{ProductCard.description}}
+    </div>
+    <div class="ProductCard-buttonsBlock row">
+      <div class="ProductCard-editButton col-xs-6">
+        <button class="EditButton">Edit</button>
+      </div>
+      <div class="ProductCard-deleteButton col-xs-6">
+        <button class="DeleteButton">Delete</button>
+      </div>
+    </div>
+  </div>
 </div>

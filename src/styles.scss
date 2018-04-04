@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/css/bootstrap.css";
+
+
+
+.ProductCard
+{
+    position: relative;
+    border: 1px solid #e7e8e9;
+    padding: 10px 10px 0;
+    color: #404040;
+    outline: none;
+   
+}
+
+

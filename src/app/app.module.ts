@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { MyComponentOneComponent } from './my-component-one/my-component-one.component';
+import { DataServiceService } from './data-service.service';
 
 
 @NgModule({
@@ -14,9 +15,10 @@ import { MyComponentOneComponent } from './my-component-one/my-component-one.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
