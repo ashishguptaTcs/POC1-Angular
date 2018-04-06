@@ -1,22 +1,83 @@
 <div class="ProductCards row">
-    <app-add-product-popup></app-add-product-popup>
-    <div *ngFor="let ProductCard of ProductCards" class="cardHover ProductCard col-xs-6 col-sm-4 col-md-3 col-lg-2">
-      <div class="card-body ProductCard-imageBlock">
-        <img src={{ProductCard.imageUrl}} class="Product-Image">
-      </div>
-      <div class="ProductCard-infoBlock">
-        <div class="Product-Title">
-          {{ProductCard.title}}
-          </div>
-          <div class="Product-Description">
-          {{ProductCard.description}}
-        </div>
-   
-      </div>
-      <div class="ProductCard-buttonsBlock row">
-          <button class="btn btn-primary EditButton col-xs-6" (click)=editProductCard(ProductCard)>Edit</button>
-          &nbsp;
-          <button class="btn btn-outline-danger DeleteButton col-xs-6" (click)=deleteProductCard(ProductCard)>Delete</button>
-      </div>
+  <app-add-product-popup></app-add-product-popup>
+  <div *ngFor="let ProductCard of ProductCards" class="cardHover ProductCard col-xs-6 col-sm-4 col-md-3 col-lg-2">
+    <div class="card-body ProductCard-imageBlock">
+      <img src={{ProductCard.imageUrl}} class="Product-Image">
     </div>
-   </div>
+    <div class="ProductCard-infoBlock">
+      <div class="Product-Title">
+        {{ProductCard.title}}
+      </div>
+      <div class="Product-Description">
+        {{ProductCard.description}}
+      </div>
+
+    </div>
+    <div class="ProductCard-buttonsBlock row">
+      <button class="btn btn-primary EditButton col-xs-6" (click)=editProductCard(ProductCard,editProductPopup)>Edit</button>
+      &nbsp;
+      <button class="btn btn-outline-danger DeleteButton col-xs-6" (click)=deleteProductCard(ProductCard)>Delete</button>
+    </div>
+
+
+    <ng-template #editProductPopup let-c="close" let-d="dismiss">
+      <div id="modalpopup">
+
+        <div class="modal-header">
+          <h1 class="edit-Product-heading modal-title">Edit Product</h1>
+          <button type="button" class="close" aria-label="Close" (click)=c>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div style="margin-bottom:2%">
+            <span>Add details below</span>
+          </div>
+
+          <form action="#">
+
+
+            <div class="form-group">
+              <label for="ProductId">
+                <b>Product ID</b>
+              </label>
+              <input [value]="ProductCard.id" disabled=true #ProductId type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product ID">
+            </div>
+
+
+            <div class="form-group">
+              <label for="ProductTitle">
+                <b>Product Title</b>
+              </label>
+              <input (input)="ProductCard.title = $event.target.value" [value]="ProductCard.title" #ProductTitle type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Title">
+            </div>
+
+            <div class="form-group">
+              <label for="ProductDescription">
+                <b>Product Desciption</b>
+              </label>
+              <input (input)="ProductCard.description = $event.target.value" [value]="ProductCard.description" #ProductDescription type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Description">
+            </div>
+
+            <div class="form-group">
+              <label for="ProductImageUrl">
+                <b>Product Image URL</b>
+              </label>
+              <input (input)="ProductCard.imageUrl = $event.target.value" [value]="ProductCard.imageUrl" #ProductImageUrl type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Image URL">
+            </div>
+
+
+            <button class="btn btn-primary" (click)="editProduct(ProductId.value,ProductTitle.value,ProductDescription.value,ProductImageUrl.value); closeModal(editProductPopup)">Edit Product</button>
+          </form>
+
+        </div>
+
+      </div>
+    </ng-template>
+
+
+
+  </div>
+</div>

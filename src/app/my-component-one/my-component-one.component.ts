@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {DataServiceService} from '../data-service.service'
+import { DataServiceService } from '../data-service.service'
 import { ProductCard } from '../ProductCard';
 import { AddProductPopupComponent } from '../add-product-popup/add-product-popup.component';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-my-component-one',
@@ -10,30 +11,65 @@ import { AddProductPopupComponent } from '../add-product-popup/add-product-popup
 })
 export class MyComponentOneComponent implements OnInit {
 
-  
 
-  ProductCards:ProductCard[];
-  constructor(private DataServiceService:DataServiceService) { }
+
+  closeResult: string;
+  private updatedProductCard: ProductCard;
+  ProductCards: ProductCard[];
+  constructor(private DataServiceService: DataServiceService,
+    private ngbModalObject: NgbModal) { }
 
   ngOnInit() {
     this.getProductCards();
   }
-  getProductCards()
-  {
-    this.DataServiceService.getData().subscribe(receivedProductCards => this.ProductCards=receivedProductCards)
+  getProductCards() {
+    this.DataServiceService.getData().subscribe(receivedProductCards => this.ProductCards = receivedProductCards)
   }
-  addProductCard(productCard:ProductCard)
-  {
+  addProductCard(productCard: ProductCard) {
     this.DataServiceService.addProductCard(productCard)
-    .subscribe(addedProductCard => this.ProductCards.push(addedProductCard));
+      .subscribe(addedProductCard => this.ProductCards.push(addedProductCard));
   }
-  editProductCard(productCard: ProductCard)
-  {
-    this.DataServiceService.editProductCard(productCard).subscribe();
+
+  editProductCard(productCard: ProductCard, updateProductPopup) {
+    this.ngbModalObject
+    .open(updateProductPopup)
+    .result
+    .then(
+        (result) => {this.closeResult = `Closed with: ${result}`;}
+      , (reason) => {this.closeResult = `Dismissed ${this.getDismissReason(reason)}`; }
+    );
+
+    
   }
-  deleteProductCard(productCard: ProductCard)
+
+
+
+  closeModal(editProductPopup)
   {
-    this.ProductCards=this.ProductCards.filter(pc => pc !== productCard );
+    editProductPopup.closeModal();
+
+  }
+
+  deleteProductCard(productCard: ProductCard) {
+    this.ProductCards = this.ProductCards.filter(pc => pc !== productCard);
     this.DataServiceService.deleteProductCard(productCard).subscribe();
+  }
+
+
+  editProduct(ProductId: string, ProductTitle: string, ProductDescription: string, ProductImageUrl: string) {
+    this.updatedProductCard = new ProductCard(ProductId, ProductTitle, ProductDescription, ProductImageUrl);
+    this.updatedProductCard.by="Rahul";
+    console.log("=============== Update=========="+JSON.stringify(this.updatedProductCard));
+    this.DataServiceService.editProductCard(this.updatedProductCard).subscribe();
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
