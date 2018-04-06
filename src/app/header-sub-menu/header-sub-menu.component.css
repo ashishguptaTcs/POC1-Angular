@@ -1,0 +1,73 @@
+.menuList {
+    display: flex;
+    justify-content: space-between;
+}
+.menu-data {
+    display: flex;
+}
+.menu-container {
+    padding-right: 30px;
+}
+.menu-container-class {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.StoreHeader-desktop {
+    color: #0068b3 !important;
+    cursor: pointer;
+}
+.findStore {
+    display: flex;
+    margin-top: 5px;
+}
+svg {
+    fill: #0068b3;
+    height: 20px;
+}
+.btn-outline-primary {
+    border-color: white;
+}
+
+.modal-backdrop.show {
+    background-color: hsla(0,0%,87%,.8);
+}
+
+.modal-body-class {
+    display: flex;
+    flex-direction: row !important;
+    border: 1px solid #ababab;
+    height: auto;
+}
+.StoreSearchDropdown-userStoreInfo {
+    background: #ecf0f9;
+    padding: 1em 1.5em 1.5em;
+    flex: 0 0 100%;
+}
+.StoreSearchDropdown-searchAndStoresNearYou {
+    padding: 0;
+    margin: 0.5em;
+}
+.DropdownSearch-wrapper{
+    display: flex;
+}
+.modal-header{
+    background-color: #0068b3;
+    color: white;
+}
+.ng-invalid  { border: 1px solid red; } 
+
+
+@media only screen and (max-width: 768px) {
+    .StoreHeader-desktop {
+        display: none;
+    }
+
+    .modal-body-class {
+        display: block;
+    }
+    .dropdown-container {
+        display: inline-grid;
+    }
+}

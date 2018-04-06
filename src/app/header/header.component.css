@@ -1,0 +1,10 @@
+#navbarSupportedContent{
+  flex-direction: row-reverse;
+  font-size:15px;
+}
+
+h1 {
+    text-shadow: 2px 2px #2E4FA0;
+    text-decoration: underline;
+    color:white;
+}

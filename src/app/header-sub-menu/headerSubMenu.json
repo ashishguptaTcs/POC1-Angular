@@ -1,0 +1,31 @@
+ {
+    "Shop Departments": [
+      {"value": "Grocery"},
+      {"value": "Produce"},
+      {"value": "Meat & Seafood"},
+      {"value": "Adult Beverage"},
+      {"value": "Baby"},
+      {"value": "Pet Care"},
+      {"value": "Cleaning & Household Essentials"},
+      {"value": "Beauty & Personal Care"},
+      {"value": "Deli"},
+      {"value": "Bakery"},
+      {"value": "Floral"},
+      {"value": "Home & Electronics"},
+      {"value": "Natural & Organic"},
+      {"value": "1-2-3 REWARDS® Personalized Prepaid Debit Card"},
+      {"value": "Fred Meyer Jewelers"},
+      {"value": "Money Services"},
+      {"value": "Mobile Market & Airtime"}
+    ],
+    "Savings & Rewards" :[
+     {"value": "Digital Coupons"},
+     {"value": "Weekly Ad"},
+     {"value": "Buy 6, Save $3"},
+     {"value": "Promotions"},
+     {"value": "Fuel Rewards"},
+     {"value": "Sabores & Savings"},
+     {"value": "Kroger Community Rewards"},
+     {"value": "In Our Community"}
+     ]
+  }

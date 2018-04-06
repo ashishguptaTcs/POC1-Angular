@@ -1,0 +1,58 @@
+[
+    {
+        "categoryTitle": "Shop Departments",
+        "menuItems": [
+            {
+                "value": "Grocery",
+                "url": "#"
+            },
+            {
+                "value": "Produce",
+                "url": "#"
+            },
+            {
+                "value": "Meat & Seafood",
+                "url": "#"
+            }
+        ]
+    },
+    {
+        "categoryTitle": "Savings & Rewards",
+        "menuItems": [
+            {
+                "value": "Digital Coupons",
+                "url": "#"
+            },
+            {
+                "value": "Weekly Ad",
+                "url": "#"
+            },
+            {
+                "value": "Buy 6, Save $3",
+                "url": "#"
+            }
+        ]
+    },
+    {
+        "categoryTitle": "Our Brands",
+        "menuItems": [
+            {
+                "value": "All Brands",
+                "url": "#"
+            }
+        ]
+    },
+    {
+        "categoryTitle": "Recipes & Ideas",
+        "menuItems": [
+            {
+                "value": "Recipes",
+                "url": "#"
+            },
+            {
+                "value": "What's for Dinner",
+                "url": "#"
+            }
+        ]
+    }
+]

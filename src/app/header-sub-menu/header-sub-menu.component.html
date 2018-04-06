@@ -1,0 +1,73 @@
+
+  <div class="menu-container-class">
+    <div class="dropdown-container">
+  <div ngbDropdown class="d-inline-block" *ngFor="let category of categories">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{category.categoryTitle}}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+        <a *ngFor="let menuItem of category.menuItems" href= "{{menuItem.url}}" class="dropdown-item">{{menuItem.value}}</a>
+      </div>
+  </div>
+</div>
+
+      <ng-template #content let-c="close" let-d="dismiss">
+          <div class="modal-header">
+              <h4 class="modal-title">Store Finder</h4>
+              <button type="button" class="close" aria-label="Close" (click)="('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            
+        <div class="modal-body-class">
+          <div class="StoreSearchDropdown-userStoreInfo col-md-6"><div class="UserStoreInfo-heading">To start shopping now, find a store!</div></div>
+          <div class="StoreSearchDropdown-searchAndStoresNearYou col-md-6">
+            <div class="StoreSearchDropdown-dropdownSearch">
+              <div>
+                <div class="DropdownSearch-findAStore">
+                  <label for="DropdownSearch-searchInput">Find a Store</label>
+                </div>
+                <div class="DropdownSearch-wrapper"><div class="DropdownSearch-input" >
+                  <span>
+                    <span class="DropdownSearch-searchBox Input Input--text Input--hasIcon">
+                      <input type="text" aria-invalid="false" aria-describedby="Input-DropdownSearch-searchInput-described" ng-model="zip-field" ng-pattern='/^(\d{5}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$/' id="DropdownSearch-searchInput" placeholder="ZIP code" class="Input-input">
+                    </span>
+                    <span ng-bind ="zip-field"></span>
+                    <div id="Input-DropdownSearch-searchInput-described" class="Input-describedBy" aria-hidden="true">
+
+                    </div>
+                  </span>
+                </div>
+                <div class="DropdownSearch-button">
+                  <button color="" type="button" disabled="" data-icon="" data-text="" class="DropdownSearch-searchButton Button Color">
+                    <span class="Button-children">Search</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="StoreSearchDropdown-storesNearYou"></div></div>
+        </div>
+        </ng-template>
+        
+        <div class="findStore" (click)="open(content)">
+            <svg fill="currentColor" viewBox="0 0 1792 1792" class="Icon-svg" focusable="false" style="vertical-align: middle;">
+                <path d="M896 75c363 0 658 294 658 658 0 369-418 716-658 984-241-268-658-615-658-984 0-364 295-658 658-658zm0 137a1 1 0 0 0 0 1021 1 1 0 0 0 0-1021z"></path>
+              </svg>
+            <a class="StoreHeader-desktop" >Find a Store to Shop!</a>
+          </div>
+    </div>
+
+      <!--
+        <div class="menu-container" id="ng-app" ng-app ng-controller="getMenueData">
+  <div class="menuList" ng-repeat="post in posts" >
+    
+    <h3>Original JSON file: {{_getData()}}</h3> 
+  </div>
+  </div>
+
+  <div class="menu-container" id="ng-app" ng-app ng-controller="getMenueData">
+    <div class="menuList" ng-repeat="post in posts" >
+      
+      <h3>Original JSON file: {{_getData()}}</h3> 
+    </div>
+    </div>
+       -->
