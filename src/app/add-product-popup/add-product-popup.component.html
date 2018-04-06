@@ -1,0 +1,60 @@
+<div class="cardHover addProductButton ProductCard col-xs-6 col-sm-4 col-md-3 col-lg-2" (click)=openAddProductPopup(addProductPopup)>
+  +
+</div>
+
+<ng-template #addProductPopup let-c="close" let-d="dismiss">
+  <div id="modalpopup">
+
+    <div class="modal-header">
+      <h1 class="add-Product-heading modal-title">Add Product</h1>
+      <button type="button" class="close" aria-label="Close" (click)=c>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <div style="margin-bottom:2%">
+        <span>Add details below</span>
+      </div>
+
+      <form action="#">
+
+
+        <div class="form-group">
+          <label for="ProductId">
+            <b>Product ID</b>
+          </label>
+          <input #ProductId type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product ID" >
+        </div>
+
+
+        <div class="form-group">
+          <label for="ProductTitle">
+            <b>Product Title</b>
+          </label>
+          <input #ProductTitle type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Title" >
+        </div>
+
+        <div class="form-group">
+          <label for="ProductDescription">
+            <b>Product Desciption</b>
+          </label>
+          <input #ProductDescription type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Description" >
+        </div>
+
+        <div class="form-group">
+          <label for="ProductImageUrl">
+            <b>Product Image URL</b>
+          </label>
+          <input #ProductImageUrl type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Image URL" >
+        </div>
+
+
+        <button class="btn btn-primary" (click)="addProduct(ProductId.value,ProductTitle.value,ProductDescription.value,ProductImageUrl.value)">Add Product</button>
+      </form>
+
+    </div>
+
+  </div>
+</ng-template>

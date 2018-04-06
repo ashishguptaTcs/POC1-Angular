@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataServiceService} from '../data-service.service'
 import { ProductCard } from '../ProductCard';
+import { AddProductPopupComponent } from '../add-product-popup/add-product-popup.component';
 
 @Component({
   selector: 'app-my-component-one',
@@ -21,9 +22,14 @@ export class MyComponentOneComponent implements OnInit {
   {
     this.DataServiceService.getData().subscribe(receivedProductCards => this.ProductCards=receivedProductCards)
   }
+  addProductCard(productCard:ProductCard)
+  {
+    this.DataServiceService.addProductCard(productCard)
+    .subscribe(addedProductCard => this.ProductCards.push(addedProductCard));
+  }
   editProductCard(productCard: ProductCard)
   {
-    
+    this.DataServiceService.editProductCard(productCard).subscribe();
   }
   deleteProductCard(productCard: ProductCard)
   {

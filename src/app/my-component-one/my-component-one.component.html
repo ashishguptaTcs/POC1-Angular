@@ -1,20 +1,22 @@
 <div class="ProductCards row">
-  <div *ngFor="let ProductCard of ProductCards" class="ProductCard col-xs-6 col-sm-4 col-md-3 col-lg-2">
-    <div class="ProductCard-imageBlock">
-      <img src={{ProductCard.imageUrl}} class="Product-Image">
-    </div>
-    <div class="ProductCard-infoBlock">
-      <div class="Product-Title">
-        {{ProductCard.title}}
-        </div>
-        <div class="Product-Description">
-        {{ProductCard.description}}
+    <app-add-product-popup></app-add-product-popup>
+    <div *ngFor="let ProductCard of ProductCards" class="cardHover ProductCard col-xs-6 col-sm-4 col-md-3 col-lg-2">
+      <div class="card-body ProductCard-imageBlock">
+        <img src={{ProductCard.imageUrl}} class="Product-Image">
       </div>
-
+      <div class="ProductCard-infoBlock">
+        <div class="Product-Title">
+          {{ProductCard.title}}
+          </div>
+          <div class="Product-Description">
+          {{ProductCard.description}}
+        </div>
+   
+      </div>
+      <div class="ProductCard-buttonsBlock row">
+          <button class="btn btn-primary EditButton col-xs-6" (click)=editProductCard(ProductCard)>Edit</button>
+          &nbsp;
+          <button class="btn btn-outline-danger DeleteButton col-xs-6" (click)=deleteProductCard(ProductCard)>Delete</button>
+      </div>
     </div>
-    <div class="ProductCard-buttonsBlock row">
-        <button class="EditButton col-xs-6" (click)=editProductCard(ProductCard)>Edit</button>
-        <button class="DeleteButton col-xs-6" (click)=deleteProductCard(ProductCard)>Delete</button>
-    </div>
-  </div>
-</div>
+   </div>

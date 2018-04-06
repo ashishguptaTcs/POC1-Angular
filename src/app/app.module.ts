@@ -19,6 +19,7 @@ import {FooterComponent} from './footer/footer.component';
 import {CreateAccountComponent} from './create-account/create-account.component';
 import { RouterModule } from '@angular/router';
 import { UserService } from "./user.service";
+import { AddProductPopupComponent } from './add-product-popup/add-product-popup.component';
 
 
 
@@ -31,7 +32,8 @@ import { UserService } from "./user.service";
     PageCarouselComponent,
     HeaderComponent,
     FooterComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    AddProductPopupComponent
   ],
   imports: [
     BrowserModule,

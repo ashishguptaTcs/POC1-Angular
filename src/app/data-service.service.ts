@@ -22,10 +22,21 @@ export class DataServiceService {
 
   deleteProductCard(productCard: ProductCard)
   {
-    console.log("TemporaryDeleteFunction!");
+    //console.log("TemporaryDeleteFunction!");
     const url = `${this.apiUrl}/${productCard.id}`;
     console.log(url);
     return this.http.delete<ProductCard>(url,httpOptions);
+  }
+  editProductCard(productCard: ProductCard)
+  {
+    const url = `${this.apiUrl}/${productCard.id}`;
+    console.log(url);
+    return this.http.put<ProductCard>(url,productCard,httpOptions);
+  }
+  addProductCard(productCard:ProductCard)
+  {
+    console.log("========="+JSON.stringify(productCard));
+    return this.http.post<ProductCard>(this.apiUrl,productCard,httpOptions);
   }
 
 }
