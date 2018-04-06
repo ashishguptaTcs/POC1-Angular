@@ -21,4 +21,13 @@ export class MyComponentOneComponent implements OnInit {
   {
     this.DataServiceService.getData().subscribe(receivedProductCards => this.ProductCards=receivedProductCards)
   }
+  editProductCard(productCard: ProductCard)
+  {
+    
+  }
+  deleteProductCard(productCard: ProductCard)
+  {
+    this.ProductCards=this.ProductCards.filter(pc => pc !== productCard );
+    this.DataServiceService.deleteProductCard(productCard).subscribe();
+  }
 }
