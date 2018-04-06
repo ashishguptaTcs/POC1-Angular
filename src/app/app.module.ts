@@ -18,6 +18,9 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {CreateAccountComponent} from './create-account/create-account.component';
 import { RouterModule } from '@angular/router';
+import { UserService } from "./user.service";
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +46,7 @@ import { RouterModule } from '@angular/router';
       { path:'createAccount', component:  CreateAccountComponent},
  ])
   ],
-  providers: [DataServiceService , AppService],
+  providers: [DataServiceService , AppService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

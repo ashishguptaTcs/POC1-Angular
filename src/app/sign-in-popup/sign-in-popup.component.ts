@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from "../user.service";
+import { User } from "../user";
 
 @Component({
   selector: 'app-sign-in-popup',
@@ -9,9 +11,16 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class SignInPopupComponent {
 
   closeResult: string;
+  private user : User;
+  constructor(private modalService: NgbModal, 
+              private signinService: UserService) {}
 
-  constructor(private modalService: NgbModal) {}
-
+  auth(userID :  string, password : string){
+    this.user = new User(userID, password);
+    //console.log("====="+userID+"======"+password);
+    console.log(this.user);
+    this.signinService.userAuthentication(this.user).subscribe(responseJson=>console.log("==========responseJSon==========="+JSON.stringify(responseJson)));
+  }
   open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
