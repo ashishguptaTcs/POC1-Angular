@@ -1,23 +1,38 @@
 #div1{
     /*margin-top: 92%;*/
+    padding: 1%;
+    display: flex;
+    justify-content: center;
     background-color: #e7e8e9;
     
 }
+.contact-us {
+    margin: 10px;
+}
+.social-icons{
+    display: flex;
+}
+
+.icons-div {
+    padding-right: 10px;
+}
 
 #div2{
-
+    padding: 2%;
+    display: flex;
+    justify-content: space-around;
     /*maring-top:98%;*/
     background-color: #ecf0f9;
 }
 footer{
 
-    margin-top:92%;
+    top: auto;
+    margin-top: 50px;
 }
 #div3{
 
     /*maring-top:98%;*/
     background-color: #ecf0f9;
-}
-hr{
-    color:black;
+    text-align: center;
+    height: auto;
 }

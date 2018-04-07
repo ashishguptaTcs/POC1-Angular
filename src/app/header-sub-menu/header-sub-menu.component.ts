@@ -8,6 +8,7 @@ import Category from '../category';
 import MenuItem from '../menuItem';
 import findStore from '../findstore';
 import {Stores} from '../stores';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-header-sub-menu',
   templateUrl: './header-sub-menu.component.html',
@@ -24,14 +25,19 @@ export class HeaderSubMenuComponent implements OnInit {
   findstore : findStore;  
   stores : Stores;
   searchedData:Stores[];
+  Cookievalue;
+  value;
   constructor(private _data : AppService,
-              private modalService: NgbModal
+              private modalService: NgbModal,
+              private cookieService: CookieService 
             ) {
 
   }
 
   ngOnInit() {
     this._getData();
+   this.Cookievalue = this.cookieService.get('signInCookie');
+   this.value = this.Cookievalue;
   }
 
   

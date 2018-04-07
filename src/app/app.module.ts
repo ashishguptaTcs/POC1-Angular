@@ -21,7 +21,7 @@ import { RouterModule } from '@angular/router';
 import { UserService } from "./user.service";
 import { AddProductPopupComponent } from './add-product-popup/add-product-popup.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -50,7 +50,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
       { path:'createAccount', component:  CreateAccountComponent},
  ])
   ],
-  providers: [DataServiceService , AppService, UserService],
+  providers: [DataServiceService , AppService, UserService,CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

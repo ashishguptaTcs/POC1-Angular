@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from "../user.service";
 import { User } from "../user";
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sign-in-popup',
@@ -11,18 +12,24 @@ import { User } from "../user";
 export class SignInPopupComponent {
 
   closeResult: string;
+  cookieValue;
   private user : User;
   constructor(private modalService: NgbModal, 
-              private signinService: UserService) {}
+              private signinService: UserService,
+              private cookieService: CookieService) {}
 
   auth(userID :  string, password : string){
     this.user = new User(userID, password);
-    //console.log("====="+userID+"======"+password);
-    console.log(this.user);
-    this.signinService.userAuthentication(this.user).subscribe(responseJson=>console.log("==========responseJSon==========="+JSON.stringify(responseJson)));
+  
+    this.signinService.userAuthentication(this.user)
+    .subscribe(responseJson=>{
+      this.cookieService.set( 'signInCookie', JSON.stringify(this.user) ); 
+  });
+  
   }
   open(content) {
     this.modalService.open(content).result.then((result) => {
+      
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
