@@ -20,6 +20,7 @@ import {CreateAccountComponent} from './create-account/create-account.component'
 import { RouterModule } from '@angular/router';
 import { UserService } from "./user.service";
 import { AddProductPopupComponent } from './add-product-popup/add-product-popup.component';
+import { HomeComponentComponent } from './home-component/home-component.component';
 
 
 
@@ -33,7 +34,8 @@ import { AddProductPopupComponent } from './add-product-popup/add-product-popup.
     HeaderComponent,
     FooterComponent,
     CreateAccountComponent,
-    AddProductPopupComponent
+    AddProductPopupComponent,
+    HomeComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { AddProductPopupComponent } from './add-product-popup/add-product-popup.
     FormsModule,
     UICarouselModule,
     RouterModule.forRoot([
-      { path:'', component: SignInPopupComponent },
+      { path:'', component: HomeComponentComponent },
  
       { path:'createAccount', component:  CreateAccountComponent},
  ])
