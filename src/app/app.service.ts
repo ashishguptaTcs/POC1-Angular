@@ -5,36 +5,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import Category from './category';
-
-
-//import { ArrayOfMenuItem } from './arrayOfMenuItems';
-
-
-
-
-
-
+import findStore from './findstore';
+import { Stores } from './stores';
 
 @Injectable()
 export class AppService{
   menuItems = [];
   categories: Category[];
-  
-  constructor(private http: HttpClient) {
-
-    
-    
-    // http.get("http://10.8.6.132:8080/menuDetails")
-    //   // Call map on the response observable to get the parsed people object
-    //   .map(res => res.json())
-    //   // Subscribe to the observable to get the parsed people object and attach it to the
-    //   // component
-    //   .subscribe(menuItems => {
-    //     this.menuItems = menuItems;
-    //   });
-    
-
-  }
+  //private apiUrl = 'http://10.8.6.132:8080/storeDetails';
+  constructor(private http: HttpClient) {}
 
   getMenuItems(): Observable<Category[]> {
 
@@ -45,5 +24,11 @@ export class AppService{
      return result ;
 
       
+  }
+
+  searchForData(zipCode: string): Observable<any>{
+    var result= this.http.get("./assets/searchResults.json");
+    console.log(result);
+    return result;
   }
 }

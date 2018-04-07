@@ -58,6 +58,9 @@ svg {
 }
 .ng-invalid  { border: 1px solid red; } 
 
+.modal-dialog{
+    max-width: 560px;
+}
 
 @media only screen and (max-width: 768px) {
     .StoreHeader-desktop {

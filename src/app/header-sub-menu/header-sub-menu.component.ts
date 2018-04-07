@@ -6,8 +6,8 @@ import { stringify } from '@angular/core/src/util';
 import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import Category from '../category';
 import MenuItem from '../menuItem';
-
-
+import findStore from '../findstore';
+import {Stores} from '../stores';
 @Component({
   selector: 'app-header-sub-menu',
   templateUrl: './header-sub-menu.component.html',
@@ -15,15 +15,15 @@ import MenuItem from '../menuItem';
 })
 export class HeaderSubMenuComponent implements OnInit {
   closeResult: string;
-  zipcode = '';
   // arraycategories =[];
   // categories=[];
   // values= [];
   // items: any;
 
   categories:Category[];
-  
-
+  findstore : findStore;  
+  stores : Stores;
+  searchedData:Stores[];
   constructor(private _data : AppService,
               private modalService: NgbModal
             ) {
@@ -34,24 +34,44 @@ export class HeaderSubMenuComponent implements OnInit {
     this._getData();
   }
 
-
+  
   _getData(){
    
     this._data.getMenuItems()
    .subscribe((receivedCategories:Category[]) => { this.categories = receivedCategories; console.log(receivedCategories)} );
-
-
-
-
-
-
-
-
-
-
-
+    
    
-    //  this.arraycategories.push(MenuItems[0]);
+   }
+
+   search(zipcode :  string){
+    console.log("Zipcode is=====" +zipcode);
+   // this.store = new findStore(zipcode,);
+    //console.log("this.store=====" +JSON.stringify(this.store.zipCode));
+    this._data.searchForData(zipcode).subscribe((resultOfSearch) => {(this.searchedData) = (resultOfSearch.stores) ; console.log( this.searchedData)} );
+
+   }
+
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+}
+
+//  this.arraycategories.push(MenuItems[0]);
     //  const arrayCategories = this.arraycategories[0];
  
     //  console.log('typeof arrayCategories ' + typeof arrayCategories);
@@ -78,26 +98,3 @@ export class HeaderSubMenuComponent implements OnInit {
 
   //
   //return JSON.stringify (this._data.menuItems.map(menuItems => menuItems));
-}
-
-
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-}
-
-

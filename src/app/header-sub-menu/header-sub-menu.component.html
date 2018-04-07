@@ -21,31 +21,31 @@
           <div class="StoreSearchDropdown-userStoreInfo col-md-6"><div class="UserStoreInfo-heading">To start shopping now, find a store!</div></div>
           <div class="StoreSearchDropdown-searchAndStoresNearYou col-md-6">
             <div class="StoreSearchDropdown-dropdownSearch">
-              <div>
+              
                 <div class="DropdownSearch-findAStore">
                   <label for="DropdownSearch-searchInput">Find a Store</label>
                 </div>
-                <div class="DropdownSearch-wrapper"><div class="DropdownSearch-input" >
-                  <span>
-                    <span class="DropdownSearch-searchBox Input Input--text Input--hasIcon">
-                      <input type="text" aria-invalid="false" aria-describedby="Input-DropdownSearch-searchInput-described" ng-model="zip-field" ng-pattern='/^(\d{5}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$/' id="DropdownSearch-searchInput" placeholder="ZIP code" class="Input-input">
-                    </span>
-                    <span ng-bind ="zip-field"></span>
-                    <div id="Input-DropdownSearch-searchInput-described" class="Input-describedBy" aria-hidden="true">
+               
+                <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+                  <input #ZipCode type="text" placeholder="ZIP code" class="Input-input" name="ZipCode">
+                  <button type="submit" class="btn btn-primary" (click)="search(ZipCode.value);" > <span class="Button-children">Search</span></button>
+                </form>
+                <div>
+                <table>
+                  <tr>
+                    <th>Area</th>
+                    <th>City</th>
+                  </tr>
+                  
+                    <tr *ngFor="let results of searchedData">{{results.area}}{{results.city}}</tr>
+                    <br/><br><br>
+                  </table>
+                </div>
 
-                    </div>
-                  </span>
-                </div>
-                <div class="DropdownSearch-button">
-                  <button color="" type="button" disabled="" data-icon="" data-text="" class="DropdownSearch-searchButton Button Color">
-                    <span class="Button-children">Search</span>
-                  </button>
-                </div>
-              </div>
+              
             </div>
           </div>
-          <div class="StoreSearchDropdown-storesNearYou"></div></div>
-        </div>
+         </div>
         </ng-template>
         
         <div class="findStore" (click)="open(content)">

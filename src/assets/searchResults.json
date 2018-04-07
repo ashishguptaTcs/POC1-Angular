@@ -1,0 +1,16 @@
+
+    {
+    "stores": [
+        
+            {
+            "city": "mumbai",
+            "area": "marol"
+            },
+            {
+            "city": "mumbai",
+            "area": "vikhroli"
+            }
+        
+    ]
+
+}
