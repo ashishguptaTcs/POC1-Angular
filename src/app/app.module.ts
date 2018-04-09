@@ -22,6 +22,7 @@ import { UserService } from "./user.service";
 import { AddProductPopupComponent } from './add-product-popup/add-product-popup.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { CookieService } from 'ngx-cookie-service';
+import { SignInButtonComponent } from './sign-in-button/sign-in-button.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CookieService } from 'ngx-cookie-service';
     FooterComponent,
     CreateAccountComponent,
     AddProductPopupComponent,
-    HomeComponentComponent
+    HomeComponentComponent,
+    SignInButtonComponent
   ],
   imports: [
     BrowserModule,

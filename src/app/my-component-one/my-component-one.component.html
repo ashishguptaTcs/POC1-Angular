@@ -17,7 +17,7 @@
       <button *ngIf="cookieValue" class="btn btn-primary EditButton col-xs-6" (click)=editProductCard(ProductCard,editProductPopup)>Edit</button>
       &nbsp;
       <button *ngIf="cookieValue" class="btn btn-outline-danger DeleteButton col-xs-6" (click)=deleteProductCard(ProductCard)>Delete</button>
-      <button *ngIf="!cookieValue" class="btn btn-primary signInButton col-xs-6">Sign In to continue</button>
+      <app-sign-in-button *ngIf="!cookieValue" style="width:100%;"></app-sign-in-button>
       &nbsp;
     </div>
 

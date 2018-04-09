@@ -6,9 +6,7 @@
     <p>To create and edit your shopping cart,<br> 
     sign in to your account</p>
   </div>
-  <div style="text-align: center">
-    <button class="btn btn-primary" style="width:80%" (click)="open(content)">{{signInText}}</button>
-  </div>
+  <app-sign-in-button></app-sign-in-button>
   <hr>
   <div>
     <p>Don't have an account?</p>
@@ -17,30 +15,3 @@
     <button routerLink="/createAccount" class="btn btn-primary " style="width:80%"><a class ="create-account-button" >Create an Account</a></button>
   </div>
 </div>
-
-<ng-template #content let-c="close" let-d="dismiss">
-  <div id="modalpopup">
-    <div class="modal-header">
-      <h1 class="signIn_heading modal-title">Sign In</h1>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div style="margin-bottom:2%">
-        <span>Sign in to your existing account</span>
-      </div>
-      <form action="#">
-        <div class="form-group">
-          <label for="email"><b>Email Address</b></label>
-          <input #userID type="text" class="form-control col-md-12 col-lg-12" id="userID" placeholder="Enter UserID" name="userID">
-        </div>
-        <div class="form-group">
-          <label for="pwd"><b>Password</b></label>
-          <input #password type="password" class="form-control col-md-12 col-lg-12" id="pwd" placeholder="Enter password" name="pwd">
-        </div>
-        <button type="submit" class="btn btn-primary" (click)="auth(userID.value, password.value);c();">Sign In</button>
-      </form>
-    </div>
-  </div>
-</ng-template> 
