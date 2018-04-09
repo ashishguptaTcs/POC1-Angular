@@ -28,8 +28,8 @@ export class AppService{
   }
 
   searchForData(zipCode: string): Observable<any>{
-    const url = `${this.apiUrl}/${zipCode}`;
-    var result= this.http.get(url);
+    //const url = `${this.apiUrl}/${zipCode}`;
+    var result= this.http.get('./assets/searchResults.json');
     console.log(result);
     return result;
   }
