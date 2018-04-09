@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ProductCard } from '../ProductCard';
 import { DataServiceService } from '../data-service.service';
@@ -11,6 +11,7 @@ import { DataServiceService } from '../data-service.service';
 export class AddProductPopupComponent implements OnInit {
 
   private productToAdd:ProductCard;
+  @Output() onAddProductCall = new EventEmitter<ProductCard>();
   closeResult:string;
   constructor(private ngbModalObject: NgbModal,
               private DataServiceService:DataServiceService) { }
@@ -24,6 +25,7 @@ export class AddProductPopupComponent implements OnInit {
     this.productToAdd=new ProductCard(productId,productTitle,productDesciption,productImageUrl);
     console.log("++++++++++"+JSON.stringify(this.productToAdd));
     this.productToAdd.by="Rahul";
+    this.onAddProductCall.emit(this.productToAdd);
     this.DataServiceService.addProductCard(this.productToAdd).subscribe();
   }
 

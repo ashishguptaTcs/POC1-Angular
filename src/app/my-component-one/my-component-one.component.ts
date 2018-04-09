@@ -26,8 +26,10 @@ export class MyComponentOneComponent implements OnInit {
     this.DataServiceService.getData().subscribe(receivedProductCards => this.ProductCards = receivedProductCards)
   }
   addProductCard(productCard: ProductCard) {
-    this.DataServiceService.addProductCard(productCard)
-      .subscribe(addedProductCard => this.ProductCards.push(addedProductCard));
+    // this.DataServiceService.addProductCard(productCard)
+    //   .subscribe(addedProductCard => this.ProductCards.push(addedProductCard));
+
+    this.ProductCards.push(productCard);
   }
 
   editProductCard(productCard: ProductCard, updateProductPopup) {

@@ -46,8 +46,8 @@ svg {
     flex: 0 0 100%;
 }
 .StoreSearchDropdown-searchAndStoresNearYou {
-    padding: 0;
-    padding: 1px;
+    padding: 1em 1.5em 1.5em;
+
 }
 .DropdownSearch-wrapper{
     display: flex;
@@ -78,6 +78,9 @@ svg {
 #customers tr:hover {background-color: #ddd;}
 .search-results-table{
     margin-top: 10px;
+}
+.search-btn{
+    margin: 10px 0px;
 }
 @media only screen and (max-width: 768px) {
     .StoreHeader-desktop {
