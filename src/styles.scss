@@ -15,6 +15,7 @@
    padding-bottom: 15px;
    font-family: Roboto, sans-serif;
     color: #404040;
+    max-width: 277px;
 }
 .cardHover:hover
 {
@@ -65,8 +66,8 @@
 .addProductButton
 {
     font-size: 10rem;
-    width: 14rem;
-    max-width: unset;
+    width: 277px;
+    max-width: 277px;
     text-align: center;
     height: 17rem;
     cursor: pointer;

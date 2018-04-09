@@ -9,6 +9,8 @@ import MenuItem from '../menuItem';
 import findStore from '../findstore';
 import {Stores} from '../stores';
 import { CookieService } from 'ngx-cookie-service';
+import { parseCookieValue } from '@angular/common/src/cookie';
+import { window } from 'rxjs/operators/window';
 @Component({
   selector: 'app-header-sub-menu',
   templateUrl: './header-sub-menu.component.html',
@@ -36,8 +38,8 @@ export class HeaderSubMenuComponent implements OnInit {
 
   ngOnInit() {
     this._getData();
-   this.Cookievalue = this.cookieService.get('signInCookie');
-   this.value = this.Cookievalue;
+    this.Cookievalue = this.cookieService.get('signInCookie');
+   
   }
 
   
@@ -45,7 +47,7 @@ export class HeaderSubMenuComponent implements OnInit {
    
     this._data.getMenuItems()
    .subscribe((receivedCategories:Category[]) => { this.categories = receivedCategories; console.log(receivedCategories)} );
-    
+   this.Cookievalue = this.cookieService.get('signInCookie');
    
    }
 
@@ -57,6 +59,10 @@ export class HeaderSubMenuComponent implements OnInit {
 
    }
 
+   delete() {
+    this.cookieService.delete('signInCookie');
+    location.reload();
+   }
 
    open(content) {
     this.modalService.open(content).result.then((result) => {

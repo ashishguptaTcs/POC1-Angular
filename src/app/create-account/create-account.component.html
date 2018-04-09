@@ -10,8 +10,10 @@
           <label for="firstName" class="col-sm-3 control-label">Email</label>
         
         <div class="col-sm-9">
-          <input #email type="text" id="email" placeholder="Email" class="form-control" autofocus>
+          <!-- <input  type="text" id="email" placeholder="Email" class="form-control" autofocus> -->
+          <input #email type="email" class="form-control" id="email" placeholder="Email" name="email" email required ngModel> 
         </div>
+        <span class="help-bpx" *ngIf="email.touched && !email.valid ">Please enter the Email Value</span>
       </div>
       
       <div class="form-group">
