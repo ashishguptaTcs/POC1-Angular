@@ -3,7 +3,7 @@
     <h3 class="panel-title">Create an Account</h3>
   </div>
   <div class="panel-body">
-    <form class="form-horizontal">
+    <form class="form-horizontal" (ngSubmit)="create()" #createForm="ngForm">
  
       <div class="form-group" style="text-align:left">
         
@@ -11,7 +11,7 @@
         
         <div class="col-sm-9">
           <!-- <input  type="text" id="email" placeholder="Email" class="form-control" autofocus> -->
-          <input #email type="email" class="form-control" id="email" placeholder="Email" name="email" email required ngModel> 
+          <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="createuser.email" #email="ngModel" required > 
         </div>
         <span class="help-bpx" *ngIf="email.touched && !email.valid ">Please enter the Email Value</span>
       </div>
@@ -21,8 +21,9 @@
         <label for="firstName" class="col-sm-3 control-label">Name</label>
         
         <div class="col-sm-9">
-          <input #name type="text" id="name" placeholder="name" class="form-control" autofocus>
+          <input type="text"  placeholder="name" class="form-control" name="name"  minlength="4" [(ngModel)]="createuser.name" #name="ngModel" required>
         </div>
+        <span class="help-bpx" *ngIf="name.touched && !name.valid ">Please enter the Name Value</span>
       </div>
  
       <!--<div class="form-group">
@@ -37,20 +38,22 @@
  
       <div class="form-group">
         
-        <label for="password" class="col-sm-3 control-label">Password</label>
+        <label for="password"  class="col-sm-3 control-label" minlength="4">Password</label>
         
         <div class="col-sm-9">
-          <input #password type="password" id="password" placeholder="Password" class="form-control">
+          <input type="password" placeholder="Password" class="form-control" name="password"  [(ngModel)]="createuser.password" #password="ngModel" required>
         </div>
+        <span class="help-bpx" *ngIf="password.touched && !password.valid ">Please enter the Password Value</span>
       </div>
  
       <div class="form-group">
         
-        <label for="password" class="col-sm-3 control-label">User Name</label>
+        <label for="password" class="col-sm-3 control-label" >User Name</label>
         
         <div class="col-sm-9">
-          <input #userName type="text" id="userName" placeholder=" User Name" class="form-control">
+          <input type="text"  placeholder=" User Name" class="form-control" name="userName" minlength="4"  [(ngModel)]="createuser.userName" #userName="ngModel" required>
         </div>
+        <span class="help-bpx" *ngIf="userName.touched && !userName.valid ">Please enter the userName Value</span>
       </div>
  
       <div class="form-group">
@@ -58,7 +61,7 @@
         <div class="col-sm-9" style="padding-left:5px">
           <!--<button type="submit" class="btn btn-primary btn-lg btn-block login-button" id="button">Submit</button>-->
           <!--<button class="btn btn-primary btn-lg btn-block login-button" (click)="console.log('ghhj')"><h3>Submit</h3></button>-->
-          <button type="submit" class="btn btn-primary" (click)="create(email.value,name.value,password.value,userName.value);">Submit</button>
+          <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">Submit</button>
         </div>
       </div>
  

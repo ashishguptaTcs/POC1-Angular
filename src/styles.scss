@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./app/css/bootstrap.css";
-
+input.ng-valid.ng-touched {
+ 
+border: 1px solid #5cb85c;
+border-left: 5px solid #5cb85c;
+}
+ 
+input.ng-invalid.ng-touched {
+ 
+border: 1px solid #de2f2f;
+border-left: 5px solid #de2f2f;
+}​
 .btn-link
 {
     color:red;
@@ -72,3 +82,4 @@
     height: 17rem;
     cursor: pointer;
 }
+

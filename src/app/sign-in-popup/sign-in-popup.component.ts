@@ -15,7 +15,7 @@ export class SignInPopupComponent implements OnInit {
   cookieValue;
   private user : User;
   signInText =  'Sign In';
-  
+  applicationId;
   constructor(private modalService: NgbModal, 
               private signinService: UserService,
               private cookieService: CookieService) {}
@@ -23,20 +23,20 @@ export class SignInPopupComponent implements OnInit {
             ngOnInit() {
               this.cookieValue= this.cookieService.get('signInCookie');
       console.log(this.cookieValue);
-        this.signInText = (this.cookieValue)  ? ("Welcome" + this.cookieValue) : 'Sign In'  ;
+        this.signInText = (this.cookieValue)  ? ("Welcome  " + this.cookieValue) : 'Sign In'  ;
               }
 
 
-  auth(userID :  string, password : string){
-   
-    this.user = new User(userID, password);
-  
+  auth(userID :  string, password : string ){
+    this.applicationId ='007';
+    this.user = new User(this.applicationId,userID, password);
+    console.log(JSON.stringify(this.user));
     this.signinService.userAuthentication(this.user)
     .subscribe(responseJson=>{
-      this.cookieService.set( 'signInCookie', JSON.stringify(this.user.userId) ); 
+      this.cookieService.set( 'signInCookie', this.user.userId ); 
       this.cookieValue= this.cookieService.get('signInCookie');
       console.log(this.cookieValue);
-        this.signInText = (this.cookieValue)  ? ("Welcome" + this.cookieValue) : 'Sign In'  ;
+        this.signInText = (this.cookieValue)  ? ("Welcome   "   +   this.cookieValue) : 'Sign In'  ;
         location.reload();
   });
  
