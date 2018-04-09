@@ -58,7 +58,7 @@ export class HeaderSubMenuComponent implements OnInit {
    }
 
 
-  open(content) {
+   open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

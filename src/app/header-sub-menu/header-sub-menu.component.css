@@ -47,7 +47,7 @@ svg {
 }
 .StoreSearchDropdown-searchAndStoresNearYou {
     padding: 0;
-    margin: 0.5em;
+    padding: 1px;
 }
 .DropdownSearch-wrapper{
     display: flex;
@@ -62,6 +62,23 @@ svg {
     max-width: 560px;
 }
 
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child{background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+.search-results-table{
+    margin-top: 10px;
+}
 @media only screen and (max-width: 768px) {
     .StoreHeader-desktop {
         display: none;

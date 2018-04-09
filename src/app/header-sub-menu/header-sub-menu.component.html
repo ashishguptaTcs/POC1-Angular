@@ -12,7 +12,7 @@
       <ng-template #content let-c="close" let-d="dismiss">
           <div class="modal-header">
               <h4 class="modal-title">Store Finder</h4>
-              <button type="button" class="close" aria-label="Close" (click)="('Cross click')">
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -30,14 +30,13 @@
                   <input #ZipCode type="text" placeholder="ZIP code" class="Input-input" name="ZipCode">
                   <button type="submit" class="btn btn-primary" (click)="search(ZipCode.value);" > <span class="Button-children">Search</span></button>
                 </form>
-                <div>
-                <table>
-                  <tr>
-                    <th>Area</th>
-                    <th>City</th>
-                  </tr>
+                <div class="search-results-table">
+                <table id="customers">
                   
-                    <tr *ngFor="let results of searchedData">{{results.area}}{{results.city}}</tr>
+                    <tr *ngFor="let results of searchedData">
+                      <td>{{results.area}}</td>
+                      <td>{{results.city}}</td>
+                    </tr>
                     <br/><br><br>
                   </table>
                 </div>
