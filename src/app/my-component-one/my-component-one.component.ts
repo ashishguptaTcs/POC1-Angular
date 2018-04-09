@@ -3,6 +3,7 @@ import { DataServiceService } from '../data-service.service'
 import { ProductCard } from '../ProductCard';
 import { AddProductPopupComponent } from '../add-product-popup/add-product-popup.component';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-my-component-one',
@@ -17,10 +18,12 @@ export class MyComponentOneComponent implements OnInit {
   private updatedProductCard: ProductCard;
   ProductCards: ProductCard[];
   constructor(private DataServiceService: DataServiceService,
-    private ngbModalObject: NgbModal) { }
-
+    private ngbModalObject: NgbModal,
+    private cookieService: CookieService) { }
+  cookieValue;
   ngOnInit() {
     this.getProductCards();
+    this.cookieValue= this.cookieService.get('signInCookie');
   }
   getProductCards() {
     this.DataServiceService.getData().subscribe(receivedProductCards => this.ProductCards = receivedProductCards)
