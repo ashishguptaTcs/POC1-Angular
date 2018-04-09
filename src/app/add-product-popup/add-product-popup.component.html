@@ -7,7 +7,7 @@
 
     <div class="modal-header">
       <h1 class="add-Product-heading modal-title">Add Product</h1>
-      <button type="button" class="close" aria-label="Close" (click)=c>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -51,7 +51,7 @@
         </div>
 
 
-        <button class="btn btn-primary" (click)="addProduct(ProductId.value,ProductTitle.value,ProductDescription.value,ProductImageUrl.value)">Add Product</button>
+        <button class="btn btn-primary" (click)="addProduct(ProductId.value,ProductTitle.value,ProductDescription.value,ProductImageUrl.value);c('Submit');">Add Product</button>
       </form>
 
     </div>
