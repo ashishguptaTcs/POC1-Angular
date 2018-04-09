@@ -7,7 +7,7 @@
     sign in to your account</p>
   </div>
   <div style="text-align: center">
-    <button class="btn btn-primary" style="width:80%" (click)="open(content)">Sign In</button>
+    <button class="btn btn-primary" style="width:80%" (click)="open(content)">{{signInText}}</button>
   </div>
   <hr>
   <div>
@@ -39,7 +39,7 @@
           <label for="pwd"><b>Password</b></label>
           <input #password type="password" class="form-control col-md-12 col-lg-12" id="pwd" placeholder="Enter password" name="pwd">
         </div>
-        <button type="submit" class="btn btn-primary" (click)="auth(userID.value, password.value);">Sign In</button>
+        <button type="submit" class="btn btn-primary" (click)="auth(userID.value, password.value);c();">Sign In</button>
       </form>
     </div>
   </div>

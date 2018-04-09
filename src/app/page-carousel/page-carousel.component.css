@@ -51,7 +51,7 @@ img{
 }
 
 .carousal-container {
-    height: 326px !important;
+    height: 21rem !important;
 }
 
 @media only screen and (max-width: 768px) {

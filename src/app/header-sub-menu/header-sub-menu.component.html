@@ -46,16 +46,19 @@
           </div>
          </div>
         </ng-template>
-        <div>
+        <div class="header-submenu_logout_findstore">
             <!-- <a >Welcome!! {{value}} </a> -->
-         
-        <div class="findStore" (click)="open(content)">
+           
+           <div class="findStore" (click)="open(content)">
           
-            <svg fill="currentColor" viewBox="0 0 1792 1792" class="Icon-svg" focusable="false" style="vertical-align: middle;">
+            <svg fill="currentColor" viewBox="0 0 1792 1792" class="Icon-svg" focusable="false" style="vertical-align: middle; margin: 2px;">
                 <path d="M896 75c363 0 658 294 658 658 0 369-418 716-658 984-241-268-658-615-658-984 0-364 295-658 658-658zm0 137a1 1 0 0 0 0 1021 1 1 0 0 0 0-1021z"></path>
               </svg>
             <a class="StoreHeader-desktop" >Find a Store to Shop!</a>
           </div>
+          <div class="logout-section" *ngIf="Cookievalue">
+              <button class="btn btn-outline-primary" (click)="delete()">logout</button>
+            </div>
         </div>
     </div>
 

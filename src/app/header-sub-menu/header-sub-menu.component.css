@@ -11,7 +11,6 @@
 .menu-container-class {
     display: flex;
     justify-content: space-between;
-    padding-right: 20px;
     border-bottom: 1px solid #d8d8d8;
 }
 .StoreHeader-desktop {
@@ -20,7 +19,7 @@
 }
 .findStore {
     display: flex;
-    margin-top: 5px;
+    margin-top: 6px;
 }
 svg {
     fill: #0068b3;
@@ -81,6 +80,12 @@ svg {
 }
 .search-btn{
     margin: 10px 0px;
+}
+.header-submenu_logout_findstore {
+    display: flex;
+}
+.logout-section {
+    margin-left: 20px;
 }
 @media only screen and (max-width: 768px) {
     .StoreHeader-desktop {

@@ -1,4 +1,5 @@
-import { Component ,OnInit} from '@angular/core';
+
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { UserCreate } from '../userCreate';
 import { UserService } from '../user.service';
@@ -15,21 +16,26 @@ export class CreateAccountComponent implements OnInit {
   
   closeResult: string;
   private createuser : UserCreate;
-
+  
  constructor(private modalService: NgbModal,
               private   UserService : UserService) {}
  
               ngOnInit() {
-               
+                console.log("Inside onit");
+                this.createuser = {
+                  email: '',
+                  name: '',
+                  password: '',
+                  userName: ''
+                }
               }
 
 
- create(email: string , name:string ,password: string , userName:string) {
-    console.log("name====="+name+"password======"+password +'email=======' +email +'username========'+userName );
-    this.createuser = new UserCreate(email, name,password ,userName);
+ public create() {
+   console.log(this.createuser);
+    //console.log("name====="+name+"password======"+password +'email=======' +email +'username========'+userName );
+    this.createuser = new UserCreate(this.createuser.email, this.createuser.name,this.createuser.password ,this.createuser.userName);
     this.UserService.createUser( this.createuser).subscribe(response =>{console.log(response)});
-  // this.DataServiceService.addProductCard(productCard)
-  //   .subscribe(addedProductCard => this.ProductCards.push(addedProductCard));
 }
  open(content) {
    this.modalService.open(content).result.then((result) => {
