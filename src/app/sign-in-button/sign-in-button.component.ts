@@ -16,6 +16,7 @@ export class SignInButtonComponent implements OnInit {
   private user : User;
   signInText =  'Sign In';
   applicationId;
+  errorMessage;
   constructor(private modalService: NgbModal, 
               private signinService: UserService,
               private cookieService: CookieService) {}
@@ -28,20 +29,37 @@ export class SignInButtonComponent implements OnInit {
 
 
   auth(userID :  string, password : string ){
-    this.applicationId ='007';
+    this.applicationId ='Bond007';
     this.user = new User(this.applicationId,userID, password);
     console.log(JSON.stringify(this.user));
     this.signinService.userAuthentication(this.user)
-    .subscribe(responseJson=>{
-      this.cookieService.set( 'signInCookie', this.user.userId ); 
-      this.cookieValue= this.cookieService.get('signInCookie');
-      console.log(this.cookieValue);
-        this.signInText = (this.cookieValue)  ? ("Welcome   "   +   this.cookieValue) : 'Sign In'  ;
-        location.reload();
+    .subscribe(responseJson=>{ this.afterAuthentication(responseJson.message);
+      // this.cookieService.set( 'signInCookie', this.user.userId ); 
+      // this.cookieValue= this.cookieService.get('signInCookie');
+      // console.log(this.cookieValue);
+      //   this.signInText = (this.cookieValue)  ? ("Welcome   "   +   this.cookieValue) : 'Sign In'  ;
+      //   location.reload(); 
   });
  
   }
   
+
+  afterAuthentication(response: any): string {
+    if (response === 'User Authenticate' ) {
+      console.log("response is===="+response);
+     this.cookieService.set( 'signInCookie', this.user.userId ); 
+      this.cookieValue= this.cookieService.get('signInCookie');
+      console.log(this.cookieValue);
+        this.signInText = (this.cookieValue)  ? ("Welcome   "   +   this.cookieValue) : 'Sign In'  ;
+        location.reload(); 
+    } else if (response === 'Unable To Find User') {
+      console.log("response is===="+response);
+      return this.errorMessage = '*' +response;
+    } else  {
+      console.log("response is===="+response);
+      return  this.errorMessage = '*' +response;
+    }
+  }
   open(content) {
     (this.cookieValue) ? event.preventDefault() :
     this.modalService.open(content).result.then((result) => {
