@@ -15,7 +15,7 @@ import { UserService } from '../user.service';
 export class CreateAccountComponent implements OnInit {
   
   closeResult: string;
-  private createuser : UserCreate;
+  createuser : UserCreate;
   
  constructor(private modalService: NgbModal,
               private   UserService : UserService) {}

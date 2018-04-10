@@ -1,3 +1,8 @@
+<div class="ContainerGrid-header-container">
+  <div class="ContainerGrid-header-title">Start My Cart</div>
+</div>
+
+
 <div class="ProductCards row">
   <app-add-product-popup *ngIf="cookieValue" (onAddProductCall)="addProductCard($event)"></app-add-product-popup>
   <div *ngFor="let ProductCard of ProductCards" class="cardHover ProductCard col-xs-6 col-sm-4 col-md-3 col-lg-2">
