@@ -8,10 +8,12 @@
   </div>
   <app-sign-in-button></app-sign-in-button>
   <hr>
-  <div>
-    <p>Don't have an account?</p>
-  </div>
-  <div style="text-align: center">
-    <button routerLink="/createAccount" class="btn btn-primary " style="width:80%"><a class ="create-account-button" >Create an Account</a></button>
-  </div>
+  <div *ngIf="!cookieValue">
+    <div>
+      <p>Don't have an account?</p>
+    </div>
+    <div style="text-align: center">
+      <button routerLink="/createAccount" class="btn btn-primary " style="width:80%"><a class ="create-account-button" >Create an Account</a></button>
+    </div>
+</div>
 </div>
