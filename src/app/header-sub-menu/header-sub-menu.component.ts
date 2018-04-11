@@ -27,7 +27,9 @@ export class HeaderSubMenuComponent implements OnInit {
   findstore : findStore;  
   stores : Stores;
   searchedData:Stores[];
+  searchedDataErrorMessage;
   Cookievalue;
+  length;
   value;
   constructor(private _data : AppService,
               private modalService: NgbModal,
@@ -50,15 +52,34 @@ export class HeaderSubMenuComponent implements OnInit {
    this.Cookievalue = this.cookieService.get('signInCookie');
    
    }
-
+/*****************************Find Store *********************************/
    search(zipcode :  string){
-    console.log("Zipcode is=====" +zipcode);
-   // this.store = new findStore(zipcode,);
-    //console.log("this.store=====" +JSON.stringify(this.store.zipCode));
-    this._data.searchForData(zipcode).subscribe((resultOfSearch) => {(this.searchedData) = (resultOfSearch.stores) ; console.log( this.searchedData)} );
-
+    this.searchedData = null;
+    this._data.searchForData(zipcode).subscribe((resultOfSearch) => {
+      this.searchedDataFunction(resultOfSearch)
+    });
+   }
+   searchedDataFunction(resultOfSearch) {
+    if(resultOfSearch.message === 'Input zipcode length must be six digits'){
+      console.log("in if");
+      this.searchedDataErrorMessage= "*" +(resultOfSearch.message);
+    }
+    else if(!resultOfSearch.message)
+   { 
+     this.searchedData =(resultOfSearch.stores);
+     this.length = this.searchedData.length;
+     this.searchedDataErrorMessage="";
+    } 
+    else{
+      this.searchedDataErrorMessage="";
+    }
    }
 
+   reset() {
+    this.searchedDataErrorMessage="";
+    this.searchedData = null;
+   }
+/******************************************************************************/
    delete() {
     this.cookieService.delete('signInCookie');
     location.reload();

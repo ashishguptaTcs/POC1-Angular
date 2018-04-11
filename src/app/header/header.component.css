@@ -8,3 +8,6 @@ h1 {
     text-decoration: underline;
     color:white;
 }
+.navbar-brand {
+  width: 100px;
+}

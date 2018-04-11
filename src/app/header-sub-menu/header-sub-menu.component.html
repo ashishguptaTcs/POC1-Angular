@@ -26,20 +26,27 @@
                   <label for="DropdownSearch-searchInput">Find a Store</label>
                 </div>
                
-                <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-                  <input #ZipCode type="text" placeholder="ZIP code" class="Input-input" name="ZipCode">
-                  <button type="submit" class="btn btn-primary search-btn" (click)="search(ZipCode.value);" > <span class="Button-children">Search</span></button>
+                <form #myForm="ngForm" class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+                  <input #ZipCode type="text" placeholder="ZIP code" class="Input-input" minlength="6" name="ZipCode" required>
+                  <span class="search-data-error-message">{{ searchedDataErrorMessage}}</span><br>
+                  <div class="search-modal_button-div"><button type="submit" class="btn btn-primary search-btn" (click)="search(ZipCode.value);" > <span class="Button-children">Search</span></button>
+                  <button type="reset" class= "btn btn-primary search-btn" (click)="reset();">Reset</button></div>
+                  <div *ngIf="searchedData">
+                      <div class="Number-of-stores"><span class ="length">{{length}} </span> results for stores</div>
+                      <div class="search-results-table" *ngFor="let results of searchedData">
+                      <!-- <table id="customers">
+                        
+                          <tr *ngFor="let results of searchedData">
+                            <td>{{results.area}}</td>
+                            <td>{{results.city}}</td>
+                          </tr>
+                          <br/><br><br>
+                        </table> -->
+                       <div class="search-results-content">>><span>{{results.area}}</span> ,&nbsp; <span>{{results.city}}</span></div>
+                      </div>
+                    </div>
                 </form>
-                <div class="search-results-table">
-                <table id="customers">
-                  
-                    <tr *ngFor="let results of searchedData">
-                      <td>{{results.area}}</td>
-                      <td>{{results.city}}</td>
-                    </tr>
-                    <br/><br><br>
-                  </table>
-                </div>
+               
 
                 
             </div>

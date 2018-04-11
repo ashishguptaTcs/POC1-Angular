@@ -12,8 +12,8 @@ import { Stores } from './stores';
 export class AppService{
   menuItems = [];
   categories: Category[];
-  private apiUrl = 'http://10.8.6.132:8080/storeDetails';
   //private apiUrl = 'http://10.8.6.132:8080/storeDetails';
+  private apiUrl = 'http://10.8.6.132:8080/storeDetails';
   constructor(private http: HttpClient) {}
 
   getMenuItems(): Observable<Category[]> {
@@ -28,8 +28,8 @@ export class AppService{
   }
 
   searchForData(zipCode: string): Observable<any>{
-    //const url = `${this.apiUrl}/${zipCode}`;
-    var result= this.http.get('./assets/searchResults.json');
+    const url = `${this.apiUrl}/${zipCode}`;
+    var result= this.http.get(url);
     console.log(result);
     return result;
   }
