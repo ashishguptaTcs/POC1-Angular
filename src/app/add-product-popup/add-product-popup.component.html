@@ -18,14 +18,13 @@
         <span>Add details below</span>
       </div>
 
-      <form action="#">
-
+      <form action="#"  (ngSubmit)="addProduct();c();" #addProductForm="ngForm">
 
         <div class="form-group">
           <label for="ProductId">
             <b>Product ID</b>
           </label>
-          <input #ProductId type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product ID" >
+          <input type="text" class="form-control col-md-12 col-lg-12" name="productId" placeholder="Enter Product ID" [(ngModel)]="productToAdd.id" #productId="ngModel"  required>
         </div>
 
 
@@ -33,28 +32,26 @@
           <label for="ProductTitle">
             <b>Product Title</b>
           </label>
-          <input #ProductTitle type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Title" >
+          <input type="text" class="form-control col-md-12 col-lg-12" name="productTitle" placeholder="Enter Product Title" [(ngModel)]="productToAdd.title" #productTitle="ngModel" required >
         </div>
 
         <div class="form-group">
           <label for="ProductDescription">
             <b>Product Desciption</b>
           </label>
-          <input #ProductDescription type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Description" >
+          <input type="text" class="form-control col-md-12 col-lg-12" name="productDescription" placeholder="Enter Product Description" [(ngModel)]="productToAdd.description" #productDescription="ngModel" required>
         </div>
 
         <div class="form-group">
           <label for="ProductImageUrl">
             <b>Product Image URL</b>
           </label>
-          <input #ProductImageUrl type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Image URL" >
+          <input type="text" class="form-control col-md-12 col-lg-12" name="productImageUrl" placeholder="Enter Product Image URL" [(ngModel)]="productToAdd.imageUrl" #productImageUrl="ngModel" required>
         </div>
-
-
-        <button class="btn btn-primary" (click)="addProduct(ProductId.value,ProductTitle.value,ProductDescription.value,ProductImageUrl.value);c('Submit');">Add Product</button>
+        <button class="btn btn-primary" type="submit" [disabled]="addProductForm.invalid">Add Product</button>
       </form>
 
     </div>
 
   </div>
-</ng-template>
+</ng-template>  

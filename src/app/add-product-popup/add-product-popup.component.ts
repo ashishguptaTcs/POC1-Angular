@@ -10,41 +10,48 @@ import { DataServiceService } from '../data-service.service';
 })
 export class AddProductPopupComponent implements OnInit {
 
-  private productToAdd:ProductCard;
+  productToAdd: ProductCard;
   @Output() onAddProductCall = new EventEmitter<ProductCard>();
-  closeResult:string;
+  closeResult: string;
   constructor(private ngbModalObject: NgbModal,
-              private DataServiceService:DataServiceService) { }
+    private DataServiceService: DataServiceService) {
+    this.productToAdd =
+      {
+        id:'',
+        title:'',
+        description:'',
+        by:'',
+        imageUrl:''
+      }
+
+  }
 
   ngOnInit() {
   }
 
-  addProduct(productId:string,productTitle:string,productDesciption:string,productImageUrl:string)
-  {
-    
-    this.productToAdd=new ProductCard(productId,productTitle,productDesciption,productImageUrl);
-    console.log("++++++++++"+JSON.stringify(this.productToAdd));
-    this.productToAdd.by="Rahul";
+  addProduct() {
+
+    console.log("++++++++++" + JSON.stringify(this.productToAdd));
+    this.productToAdd.by = "Rahul";
     this.onAddProductCall.emit(this.productToAdd);
-    this.DataServiceService.addProductCard(this.productToAdd).subscribe();
+    this.DataServiceService.addProductCard(this.productToAdd).subscribe(response=>console.log(response));
   }
 
-  openAddProductPopup(addProductPopup)
-  {
+  openAddProductPopup(addProductPopup) {
     this.ngbModalObject.open(addProductPopup).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 }
