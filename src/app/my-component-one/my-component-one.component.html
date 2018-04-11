@@ -43,14 +43,14 @@
             <span>Add details below</span>
           </div>
 
-          <form action="#">
+          <form action="#" (ngSubmit)="editProduct(ProductId.value,ProductTitle.value,ProductDescription.value,ProductImageUrl.value);c();" #editProductForm="ngForm">
 
 
             <div class="form-group">
               <label for="ProductId">
                 <b>Product ID</b>
               </label>
-              <input [value]="ProductCard.id" disabled=true #ProductId type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product ID">
+              <input name="ProductId" #ProductId="ngModel" [(ngModel)]="ProductCard.id" disabled=true type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product ID" required>
             </div>
 
 
@@ -58,25 +58,25 @@
               <label for="ProductTitle">
                 <b>Product Title</b>
               </label>
-              <input (input)="ProductCard.title = $event.target.value" [value]="ProductCard.title" #ProductTitle type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Title">
+              <input name="ProductTitle" #ProductTitle="ngModel" [(ngModel)]="ProductCard.title" type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Title" required>
             </div>
 
             <div class="form-group">
               <label for="ProductDescription">
                 <b>Product Desciption</b>
               </label>
-              <input (input)="ProductCard.description = $event.target.value" [value]="ProductCard.description" #ProductDescription type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Description">
+              <input name="ProductDescription" #ProductDescription="ngModel" [(ngModel)]="ProductCard.description" type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Description" required>
             </div>
 
             <div class="form-group">
               <label for="ProductImageUrl">
                 <b>Product Image URL</b>
               </label>
-              <input (input)="ProductCard.imageUrl = $event.target.value" [value]="ProductCard.imageUrl" #ProductImageUrl type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Image URL">
+              <input name="ProductImageUrl" #ProductImageUrl="ngModel" [(ngModel)]="ProductCard.imageUrl" type="text" class="form-control col-md-12 col-lg-12" placeholder="Enter Product Image URL" required>
             </div>
 
 
-            <button class="btn btn-primary" (click)="editProduct(ProductId.value,ProductTitle.value,ProductDescription.value,ProductImageUrl.value); c('Submit')">Edit Product</button>
+            <button class="btn btn-primary" type="submit" [disabled]="editProductForm.invalid">Edit Product</button>
           </form>
 
         </div>
