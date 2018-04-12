@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #d8d8d8;
+    width: 100%;
 }
 .StoreHeader-desktop {
     color: #0068b3 !important;
