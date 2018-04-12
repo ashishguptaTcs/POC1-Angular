@@ -23,7 +23,7 @@ export class SignInButtonComponent implements OnInit {
 
             ngOnInit() {
               this.cookieValue= this.cookieService.get('signInCookie');
-        this.signInText = (this.cookieValue)  ? ("Welcome  " + this.cookieValue) : 'Sign In'  ;
+             this.signInText = (this.cookieValue)  ? ("Welcome  " + this.cookieValue) : 'Sign In'  ;
               }
 
 
@@ -44,7 +44,6 @@ export class SignInButtonComponent implements OnInit {
 
   afterAuthentication(response: any): string {
     if (response === 'User Authenticate' ) {
-     this.cookieService.set( 'signInCookie', this.user.userId ); 
       this.cookieValue= this.cookieService.get('signInCookie');
         this.signInText = (this.cookieValue)  ? ("Welcome   "   +   this.cookieValue) : 'Sign In'  ;
         location.reload(); 

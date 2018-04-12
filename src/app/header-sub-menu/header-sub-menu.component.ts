@@ -83,7 +83,8 @@ export class HeaderSubMenuComponent implements OnInit {
    }
 /******************************************************************************/
    delete() {
-    this.cookieService.delete('signInCookie');
+    //this.cookieService.delete('signInCookie');
+    this._data.logout().subscribe();
     location.reload();
    }
 

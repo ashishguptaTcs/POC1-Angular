@@ -11,8 +11,8 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  private apiUrl = 'http://10.8.6.132:8080/user/authenticate/user';
-  private createServiceUrl ="http://10.8.6.132:8080/user/create";
+  private apiUrl = '/api/user/authenticate/user';
+  private createServiceUrl ="/api/user/create";
   constructor(private http:HttpClient) {}
 
   userAuthentication(user: User):Observable<any>
