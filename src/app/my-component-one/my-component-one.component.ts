@@ -64,7 +64,6 @@ export class MyComponentOneComponent implements OnInit {
   editProduct(ProductId: string, ProductTitle: string, ProductDescription: string, ProductImageUrl: string) {
     this.updatedProductCard = new ProductCard(ProductId, ProductTitle, ProductDescription, ProductImageUrl);
     this.updatedProductCard.by="Rahul";
-    console.log("=============== Update=========="+JSON.stringify(this.updatedProductCard));
     this.DataServiceService.editProductCard(this.updatedProductCard).subscribe();
   }
 

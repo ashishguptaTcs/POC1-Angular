@@ -25,7 +25,6 @@ export class CreateAccountComponent implements OnInit {
               private router: Router) {}
  
               ngOnInit() {
-                console.log("Inside onit");
                 this.createuser = {
                   applicationId: 'Bond007',
                   email: '',
@@ -37,11 +36,9 @@ export class CreateAccountComponent implements OnInit {
 
 
  public create() {
-   console.log(this.createuser);
     //console.log("name====="+name+"password======"+password +'email=======' +email +'username========'+userName );
     this.createuser = new UserCreate(this.createuser.email, this.createuser.name,this.createuser.password ,this.createuser.userName);
     this.UserService.createUser( this.createuser).subscribe(response =>{
-      console.log("in subscribe");
      this.CookieService.set( 'signInCookie', this.createuser.userName );
      this.cookieValue= this.CookieService.get('signInCookie');
      this.router.navigateByUrl('/');

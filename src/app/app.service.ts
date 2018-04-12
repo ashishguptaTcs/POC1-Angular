@@ -30,7 +30,6 @@ export class AppService{
   searchForData(zipCode: string): Observable<any>{
     const url = `${this.apiUrl}/${zipCode}`;
     var result= this.http.get(url);
-    console.log(result);
     return result;
   }
 }

@@ -19,13 +19,11 @@ export class UserService {
   {
     //console.log("TemporaryDeleteFunction!");
     const url = `${this.apiUrl}`;
-    console.log(url);
     return this.http.put<any>(url,user,httpOptions);
   }
   createUser(userCreate: UserCreate) :Observable<any>
   {
     const result = this.http.post<UserCreate>(this.createServiceUrl,userCreate,httpOptions);
-    console.log(result);
     return result
   }
 

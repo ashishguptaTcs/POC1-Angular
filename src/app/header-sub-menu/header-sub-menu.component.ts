@@ -48,7 +48,7 @@ export class HeaderSubMenuComponent implements OnInit {
   _getData(){
    
     this._data.getMenuItems()
-   .subscribe((receivedCategories:Category[]) => { this.categories = receivedCategories; console.log(receivedCategories)} );
+   .subscribe((receivedCategories:Category[]) => { this.categories = receivedCategories} );
    this.Cookievalue = this.cookieService.get('signInCookie');
    
    }
@@ -61,7 +61,9 @@ export class HeaderSubMenuComponent implements OnInit {
    }
    searchedDataFunction(resultOfSearch) {
     if(resultOfSearch.message === 'Input zipcode length must be six digits'){
-      console.log("in if");
+      this.searchedDataErrorMessage= "*" +(resultOfSearch.message);
+    }
+    else if(resultOfSearch.message === 'No result found') {
       this.searchedDataErrorMessage= "*" +(resultOfSearch.message);
     }
     else if(!resultOfSearch.message)

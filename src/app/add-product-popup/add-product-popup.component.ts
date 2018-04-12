@@ -31,10 +31,9 @@ export class AddProductPopupComponent implements OnInit {
 
   addProduct() {
 
-    console.log("++++++++++" + JSON.stringify(this.productToAdd));
     this.productToAdd.by = "Rahul";
     this.onAddProductCall.emit(this.productToAdd);
-    this.DataServiceService.addProductCard(this.productToAdd).subscribe(response=>console.log(response));
+    this.DataServiceService.addProductCard(this.productToAdd).subscribe();
   }
 
   openAddProductPopup(addProductPopup) {
