@@ -11,3 +11,11 @@ h1 {
 .navbar-brand {
   width: 100px;
 }
+@media only screen and (max-width: 768px) {
+    .justify-content-end {
+        display: block;
+    float: right;
+    }
+
+    
+}
