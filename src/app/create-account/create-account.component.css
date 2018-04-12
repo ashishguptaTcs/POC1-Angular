@@ -150,4 +150,6 @@ input.ng-invalid.ng-touched
 .help-bpx{
     padding-right: 20px;
     color: red;
+    font-size: 12px;
+    padding-left: 15px;
 }
