@@ -39,7 +39,7 @@ export class CreateAccountComponent implements OnInit {
     //console.log("name====="+name+"password======"+password +'email=======' +email +'username========'+userName );
     this.createuser = new UserCreate(this.createuser.email, this.createuser.name,this.createuser.password ,this.createuser.userName);
     this.UserService.createUser( this.createuser).subscribe(response =>{
-     this.CookieService.set( 'signInCookie', this.createuser.userName );
+     //this.CookieService.set( 'signInCookie', this.createuser.userName );
      this.cookieValue= this.CookieService.get('signInCookie');
      this.router.navigateByUrl('/');
     });

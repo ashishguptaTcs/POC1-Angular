@@ -7,6 +7,7 @@ import 'rxjs/Rx';
 import Category from './category';
 import findStore from './findstore';
 import { Stores } from './stores';
+//import { ApiService } from 'D:/Rahul/AngApp4/POC1-Angular/server/api-proxy-router.js';
 
 @Injectable()
 export class AppService{
@@ -14,6 +15,7 @@ export class AppService{
   categories: Category[];
   //private apiUrl = 'http://10.8.6.132:8080/storeDetails';
   private apiUrl = 'http://10.8.6.132:8080/storeDetails';
+  private logoutUrl = '/api/user/logout';
   constructor(private http: HttpClient) {}
 
   getMenuItems(): Observable<Category[]> {
@@ -30,6 +32,12 @@ export class AppService{
   searchForData(zipCode: string): Observable<any>{
     const url = `${this.apiUrl}/${zipCode}`;
     var result= this.http.get(url);
+    return result;
+  }
+
+  logout() : Observable<any>{
+    console.log("in app service");
+    var result= this.http.get(this.logoutUrl);
     return result;
   }
 }
