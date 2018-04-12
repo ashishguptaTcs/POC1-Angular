@@ -35,6 +35,12 @@ border-left: 5px solid #de2f2f;
     box-shadow: 0 3px 10px 0 hsla(0,0%,53%,.2);
     z-index: 1;
 }
+.cardHover
+{
+    
+    transition: transform .2s;
+
+}
 .ProductCard-imageBlock
 {
     height: 10rem;
