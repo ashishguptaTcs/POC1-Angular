@@ -9,7 +9,9 @@ h1 {
     color:white;
 }
 .navbar-brand {
-  width: 100px;
+    width: auto;
+    height: 3rem;
+
 }
 @media only screen and (max-width: 768px) {
     .justify-content-end {
